@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Day-Off Selection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Nordlich Consulting GmbH</h1>
+    <p>Weekly Day-Off Selection</p>
+  </header>
+
+  <main>
+    <!-- STEP 1: Warehouse + ID -->
+    <section id="step-login" class="card">
+      <h2>Sign in</h2>
+      <p class="sub">Choose your warehouse and enter your employee ID.</p>
+
+      <label for="warehouse">Select Warehouse</label>
+      <select id="warehouse" disabled>
+        <option value="">Loading…</option>
+      </select>
+
+      <label for="employeeId">Employee ID</label>
+      <input type="text" id="employeeId" placeholder="e.g. JB001" autocomplete="off">
+
+      <button id="btn-continue">Continue</button>
+      <div id="login-msg" class="msg hidden"></div>
+    </section>
+
+    <!-- STEP 2: Weekly poll -->
+    <section id="step-poll" class="card hidden">
+      <h2>Choose your day(s) off</h2>
+      <p class="sub" id="week-range"></p>
+
+      <div class="info">
+        <span><strong>ID:</strong> <span id="info-id"></span></span>
+        <span><strong>Warehouse:</strong> <span id="info-wh"></span></span>
+      </div>
+
+      <div id="days" class="days"></div>
+      <div id="counter" class="counter"></div>
+
+      <label for="reason">Reason</label>
+      <textarea id="reason" maxlength="300" placeholder="Why do you need these days off?"></textarea>
+
+      <button id="btn-submit">Submit</button>
+      <button id="btn-back" class="secondary">Back</button>
+      <div id="poll-msg" class="msg hidden"></div>
+    </section>
+
+    <!-- STEP 3: Done -->
+    <section id="step-done" class="card hidden">
+      <h2>Thank you!</h2>
+      <div id="done-msg" class="msg success"></div>
+      <button id="btn-again" class="secondary">Back to start</button>
+    </section>
+  </main>
+
+  <footer><a href="admin.html">Admin</a></footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
