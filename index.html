@@ -8,54 +8,95 @@
 </head>
 <body>
   <header>
-    <h1>Nordlich Consulting GmbH</h1>
+    <h1>Nordlicht Consulting GmbH</h1>
     <p>Weekly Day-Off Selection</p>
   </header>
 
   <main>
-    <!-- STEP 1: Warehouse + ID -->
-    <section id="step-login" class="card">
-      <h2>Sign in</h2>
-      <p class="sub">Choose your warehouse and enter your employee ID.</p>
+    <!-- ================= LOGIN ================= -->
+    <section id="view-login" class="card">
+      <h2>Log in</h2>
 
-      <label for="warehouse">Select Warehouse</label>
-      <select id="warehouse" disabled>
-        <option value="">Loading…</option>
-      </select>
+      <!-- Step 1: warehouse + ID -->
+      <div id="step-id">
+        <p class="sub">Choose your warehouse and enter your employee ID.</p>
+        <label for="warehouse">Select Warehouse</label>
+        <select id="warehouse" disabled>
+          <option value="">Loading…</option>
+        </select>
 
-      <label for="employeeId">Employee ID</label>
-      <input type="text" id="employeeId" placeholder="e.g. JB001" autocomplete="off">
+        <label for="employeeId">Employee ID</label>
+        <input type="text" id="employeeId" placeholder="e.g. J001" autocomplete="username">
 
-      <button id="btn-continue">Continue</button>
+        <button id="btn-continue">Continue</button>
+      </div>
+
+      <!-- Step 2: password -->
+      <div id="step-password" class="hidden">
+        <div class="info">
+          <span><strong>Name:</strong> <span id="login-name"></span></span>
+          <span><strong>ID:</strong> <span id="login-id"></span></span>
+        </div>
+
+        <div id="pw-login">
+          <label for="password">Password</label>
+          <input type="password" id="password" autocomplete="current-password">
+          <button id="btn-login">Log in</button>
+          <!-- <p class="hint">Forgot your password? Ask your admin to reset it.</p> -->
+           
+                    <p id="pw-hint" class="hint hidden">Forgot your password? Ask your admin to reset it.</p>
+        </div>
+
+        <div id="pw-create" class="hidden">
+          <p class="sub">First time here? Create your own password (at least 6 characters).</p>
+          <label for="new-password">New password</label>
+          <input type="password" id="new-password" autocomplete="new-password">
+          <label for="new-password2">Repeat password</label>
+          <input type="password" id="new-password2" autocomplete="new-password">
+          <button id="btn-create">Create password &amp; log in</button>
+        </div>
+
+        <button id="btn-change-id" class="secondary">Use another ID</button>
+      </div>
+
       <div id="login-msg" class="msg hidden"></div>
     </section>
 
-    <!-- STEP 2: Weekly poll -->
-    <section id="step-poll" class="card hidden">
-      <h2>Choose your day(s) off</h2>
-      <p class="sub" id="week-range"></p>
-
-      <div class="info">
-        <span><strong>ID:</strong> <span id="info-id"></span></span>
-        <span><strong>Warehouse:</strong> <span id="info-wh"></span></span>
+    <!-- ================= PROFILE ================= -->
+    <section id="view-profile" class="hidden">
+      <div class="card profile-head">
+        <div>
+          <h2 id="p-name"></h2>
+          <p class="sub" id="p-meta"></p>
+        </div>
+        <button id="btn-logout" class="secondary sm">Log out</button>
+      </div>
+<!-- Next shift will coming soon -->
+ 
+      <div class="card">
+        <h3>Your next shift</h3>
+        <p class="sub" id="t-date"></p>
+        <div id="t-shift" class="shift-box"></div>
+        <p id="t-note" class="hint hidden"></p>
       </div>
 
-      <div id="days" class="days"></div>
-      <div id="counter" class="counter"></div>
+      <div class="card">
+        <h3>My day-off requests</h3>
+        <div id="my-requests"></div>
+      </div>
 
-      <label for="reason">Reason</label>
-      <textarea id="reason" maxlength="300" placeholder="Why do you need these days off?"></textarea>
+      <div class="card">
+        <h3>Request days off for next week</h3>
+        <p class="sub" id="week-range"></p>
+        <div id="days" class="days"></div>
+        <div id="counter" class="counter"></div>
 
-      <button id="btn-submit">Submit</button>
-      <button id="btn-back" class="secondary">Back</button>
-      <div id="poll-msg" class="msg hidden"></div>
-    </section>
+        <label for="reason">Reason</label>
+        <textarea id="reason" maxlength="300" placeholder="Why do you need these days off?"></textarea>
 
-    <!-- STEP 3: Done -->
-    <section id="step-done" class="card hidden">
-      <h2>Thank you!</h2>
-      <div id="done-msg" class="msg success"></div>
-      <button id="btn-again" class="secondary">Back to start</button>
+        <button id="btn-submit">Send request</button>
+        <div id="req-msg" class="msg hidden"></div>
+      </div>
     </section>
   </main>
 
